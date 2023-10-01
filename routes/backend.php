@@ -12,7 +12,7 @@ use App\Http\Controllers\Backend\SaleController;
 use App\Http\Controllers\Backend\ReportController;
 
 Route::get('/', function(){
-    return redirect()->route('admin.home');
+    return redirect()->route('login');
 });
 
 Auth::routes(['register' => false]);
