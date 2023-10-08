@@ -19,8 +19,9 @@
                 <h5>{{ trans('global.create') }} {{ trans('cruds.sale.title_singular') }}</h5>
             </div> --}}
             <div class="card-body p-2">
-                <form action="{{ route('admin.sale.store') }}" method="post">
+                <form action="{{ route('admin.sale.update',$sale) }}" method="post">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12 mb-2">
                             <div class="form-group">

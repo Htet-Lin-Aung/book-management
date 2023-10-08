@@ -28,8 +28,8 @@
                     <th>{{ trans('cruds.customer.title_singular') }}</th>
                     <th>{{ trans('cruds.sale.quantity') }}</th>
                     <th>{{ trans('cruds.sale.discount') }}</th>
-                    <th>{{ trans('cruds.sale.total') }}</th>
                     <th>{{ trans('cruds.sale.paid') }}</th>
+                    <th>{{ trans('cruds.sale.total') }}</th>
                     </thead>
                     <tbody>
                         @forelse ($reports as $index => $report)
@@ -38,8 +38,8 @@
                                 <td>{{ $report->customer->name }}</td>
                                 <td>{{ $report->quantity }}</td>
                                 <td>{{ $report->discount }}</td>
-                                <td>{{ $report->total }}</td>
                                 <td>{{ $report->paid }}</td>
+                                <td>{{ $report->total }}</td>
                             </tr>
                         @empty
                         <tr>

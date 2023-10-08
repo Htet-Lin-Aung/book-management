@@ -46,6 +46,7 @@
                     <th>{{ trans('cruds.book.title_singular') }}</th>
                     <th>{{ trans('cruds.book.author') }}</th>
                     <th>{{ trans('cruds.category.title_singular') }}</th>
+                    <th>{{ trans('cruds.book.price')}}</th>
                     <th>{{ trans('global.created_at') }}</th>
                     <th>{{ trans('global.actions') }}</th>
                     </thead>
@@ -56,6 +57,7 @@
                                 <td>{{ $book->name }}</td>
                                 <td>{{ $book->author }}</td>
                                 <td>{{ $book->category->name }}</td>
+                                <td>{{ $book->price}}</td>
                                 <td>{{ $book->created_at->format('d-m-Y | h:i:s') }}</td>
                                 <td>
                                     <div class="d-flex">

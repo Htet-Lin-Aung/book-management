@@ -47,8 +47,8 @@
                     <th>{{ trans('cruds.book.title_singular') }}</th>
                     <th>{{ trans('cruds.sale.quantity') }}</th>
                     <th>{{ trans('cruds.sale.discount') }}</th>
-                    <th>{{ trans('cruds.sale.total') }}</th>
                     <th>{{ trans('cruds.sale.paid') }}</th>
+                    <th>{{ trans('cruds.sale.total') }}</th>
                     <th>{{ trans('cruds.sale.due') }}</th>
                     <th>{{ trans('global.actions') }}</th>
                     </thead>
@@ -60,9 +60,9 @@
                                 <td>{{ $sale->book->name }}</td>
                                 <td>{{ $sale->quantity }}</td>
                                 <td>{{ $sale->discount }}</td>
-                                <td>{{ $sale->total }}</td>
                                 <td>{{ $sale->paid }}</td>
-                                <td>{{ $sale->created_at->format('d-m-Y | h:i:s') }}</td>
+                                <td>{{ $sale->total }}</td>
+                                <td>{{ $sale->created_at->format('d-m-Y | h:i:s A') }}</td>
                                 <td>
                                     <div class="d-flex">
                                         @can('sale_show')
