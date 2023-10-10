@@ -106,15 +106,9 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        try {
-            $customer->delete();
-            
-            return redirect()->route('admin.customer.index');
-
-        } catch (QueryException $e) {
-            toast('A child data is existing.','error');
-            return redirect()->route('admin.customer.index');
-        }
+        $customer->delete();
+        
+        return redirect()->route('admin.customer.index');
     }
 
     /**

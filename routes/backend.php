@@ -15,6 +15,11 @@ Route::get('/', function(){
     return redirect()->route('login');
 });
 
+//Custom Error Handling
+Route::get('/error/{message}/{code}',function($message,$code){
+    return view('error',compact('message','code'));
+})->name('error');
+
 Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function(){

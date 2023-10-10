@@ -3,8 +3,6 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException; 
-use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Exception; 
 use Throwable;
@@ -39,9 +37,7 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            if ($e->getPrevious() instanceof \Illuminate\Session\TokenMismatchException) {
-                return redirect()->route('login');
-            };
+            //
         });
     }
 
@@ -49,30 +45,8 @@ class Handler extends ExceptionHandler
     {
         // Handle all exceptions here
         if ($request->is('api/*')) {
-            if ($exception instanceof HttpResponseException) {
-                return $exception->getResponse();
-            }
-    
-            if ($exception instanceof \Illuminate\Validation\ValidationException) {
-                return response()->json([
-                    'success'   => Response::HTTP_UNPROCESSABLE_ENTITY,
-                    'message'   => 'Validation errors',
-                    'data'      => $exception->validator->errors(),
-                ]);
-            }
-
-            return response()->json([
-                'message' => 'An error occurred while processing the request.',
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return (new ApiExceptionHandler)->render($request, $exception);
         }
-
-        if ($exception instanceof \Illuminate\Validation\ValidationException) {
-            return redirect()
-            ->back() // Redirect back to the previous page
-            ->withErrors($exception->validator->getMessageBag()) // Pass the validation errors
-            ->withInput(); // Keep the old input data 
-        }
-        $exception = config('app.env') === 'local' ? $exception->getMessage() : 'Please contact to admin';
-        return view('error',compact('exception'));
+        return (new WebExceptionHandler)->render($request, $exception);
     }
 }

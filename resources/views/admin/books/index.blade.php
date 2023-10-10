@@ -85,7 +85,7 @@
                             </tr>
                         @empty
                         <tr>
-                            <td colspan="6" class="text-center">
+                            <td colspan="7" class="text-center">
                                 {{ trans('global.no_data_found') }}
                             </td>
                         </tr>

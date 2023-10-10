@@ -15,7 +15,6 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $users = [
-            'id' => 1,
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('@dm!nU$er')

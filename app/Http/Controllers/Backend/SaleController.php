@@ -119,15 +119,9 @@ class SaleController extends Controller
      */
     public function destroy(Sale $sale)
     {
-        try {
-            $sale->delete();
-            
-            return redirect()->route('admin.sale.index');
-
-        } catch (QueryException $e) {
-            toast('A foreign data is existing.','error');
-            return redirect()->route('admin.sale.index');
-        }
+        $sale->delete();
+        
+        return redirect()->route('admin.sale.index');
     }
 
     /**

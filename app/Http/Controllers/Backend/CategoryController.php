@@ -107,15 +107,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        try {
-            $category->delete();
-            
-            return redirect()->route('admin.category.index');
-
-        } catch (QueryException $e) {
-            toast('A child data is existing.','error');
-            return redirect()->route('admin.category.index');
-        }
+        $category->delete();
+        
+        return redirect()->route('admin.category.index');
     }
 
     /**

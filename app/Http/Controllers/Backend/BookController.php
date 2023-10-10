@@ -110,18 +110,9 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        try {
-            
-            $book->delete();
-            
-            return redirect()->route('admin.book.index');
-
-        } catch (QueryException $e) {
-
-            toast('A child data is existing.','error');
-
-            return redirect()->route('admin.book.index');
-        }
+        $book->delete();
+        
+        return redirect()->route('admin.book.index');
     }
 
     /**

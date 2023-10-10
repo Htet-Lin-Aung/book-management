@@ -23,7 +23,7 @@ class AuthController extends Controller
     {
         $user = $this->userRepository->store($request);
         return response()->json([
-            'message' => 'User logged in successfully', 
+            'message' => 'User Registered successfully', 
             'data' => new UserResource($user)
         ]);        
     }
@@ -39,10 +39,10 @@ class AuthController extends Controller
             $user = Auth::user();
             $token = $user->createToken('User Token')->plainTextToken;
 
-            return response()->json(
-                ['message' => 'User logged in successfully', 
+            return response()->json([
+                'message' => 'User logged in successfully', 
                 'data' => new UserResource($user), 
-                'token' => $token
+                'access_token' => $token
             ]);
         } else {
             return response()->json(['message' => 'Invalid credentials'], 401);
