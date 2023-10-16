@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+use App\Models\Role;
+use App\Models\Permission;
 
 class PermissionRoleTableSeeder extends Seeder
 {
@@ -17,7 +17,7 @@ class PermissionRoleTableSeeder extends Seeder
     public function run()
     {
         $admin_permissions = Permission::all();
-
-        Role::findOrFail(1)->permissions()->sync($admin_permissions->pluck('id'));
+        
+        Role::first()->permissions()->sync($admin_permissions->pluck('id'));
     }
 }

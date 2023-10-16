@@ -1,6 +1,6 @@
 <?php
 namespace App\Repositories\Interfaces;
-use Spatie\Permission\Models\Role;
+use App\Models\Role;
 
 Interface RoleRepositoryInterface{
 

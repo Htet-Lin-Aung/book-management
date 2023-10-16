@@ -16,7 +16,7 @@ class RoleUserTableSeeder extends Seeder
     public function run()
     {
         $user = User::first();
-
+        
         $user->assignRole('admin');
     }
 }

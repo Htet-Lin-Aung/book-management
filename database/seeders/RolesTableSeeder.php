@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
+use App\Models\Role;
 
 class RolesTableSeeder extends Seeder
 {
@@ -15,18 +15,12 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         $roles = [
-            [
-                'name'  =>  'admin',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name'  =>  'user',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
+            ['name' => 'user'],
+            ['name' => 'admin'],
         ];
 
-        Role::insert($roles);
+        collect($roles)->map(function ($role) {
+            Role::create($role);
+        });
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use Exception;
+use App\Models\Role;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 use App\Repositories\Interfaces\RoleRepositoryInterface;
 
 

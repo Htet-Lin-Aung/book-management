@@ -32,7 +32,7 @@ class UpdateUserRequest extends FormRequest
                 'nullable',
             ],
             'roles.*' => [
-                'integer',
+                'string',
             ],
             'roles' => [
                 'required',

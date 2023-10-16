@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
+use App\Traits\HasUuid;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Models\Role;
+use App\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\PermissionRegistrar;
@@ -13,7 +14,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasUuid;
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +26,10 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,7 +47,10 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
+        'id' => 'string',
         'email_verified_at' => 'datetime',
     ];
+
+
 
 }

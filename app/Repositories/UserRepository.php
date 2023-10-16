@@ -6,7 +6,7 @@ use Exception;
 use App\Models\User;
 use App\Exports\UsersExport;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
+use App\Models\Role;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 

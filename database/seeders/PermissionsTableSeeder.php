@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
+use App\Models\Permission;
 
 class PermissionsTableSeeder extends Seeder
 {
@@ -50,6 +50,8 @@ class PermissionsTableSeeder extends Seeder
             ['name' => 'report_access'],
         ];
 
-        Permission::insert($permissions);
+        collect($permissions)->map(function ($permission) {
+            Permission::create($permission);
+        });
     }
 }

@@ -14,9 +14,9 @@ class CreateSalesTable extends Migration
     public function up()
     {
         Schema::create('sales', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('book_id');
-            $table->unsignedBigInteger('customer_id');
+            $table->uuid('id')->primary();
+            $table->uuid('book_id');
+            $table->uuid('customer_id');
             $table->integer('quantity');
             $table->decimal('discount', 8, 2);
             $table->decimal('total', 10, 2);
