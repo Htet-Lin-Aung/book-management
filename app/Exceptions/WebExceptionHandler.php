@@ -17,25 +17,11 @@ class WebExceptionHandler extends Exception
             ->withErrors($exception->validator->getMessageBag()) // Pass the validation errors
             ->withInput(); // Keep the old input data 
         }
-
-        if ($exception instanceof \Illuminate\Auth\Access\AuthorizationException) {
-            $message = "You don't have permissions!";
-            $code = Response::HTTP_FORBIDDEN;
-            return redirect()->route('error',[$message,$code]);
-        }
-
-        if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
-            return redirect()->route('login');
-        }
         
-        if ($exception->getPrevious() instanceof \Illuminate\Session\TokenMismatchException) {
-            return redirect()->route('login');
-        };
-
         if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
             $message = "Not found what you are searching for!";
             $code = $exception->getStatusCode();
-            return redirect()->route('error',[$message,$code]);
+            return response()->view('error',compact('message','code'));
         }
 
         if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
@@ -48,13 +34,13 @@ class WebExceptionHandler extends Exception
                 toast('A child data is existing!','error');
                 return redirect()->back();
             }
-            $message = "Please check your query!";
-            $code = Response::HTTP_UNPROCESSABLE_ENTITY;
-            return redirect()->route('error',[$message,$code]);
+            $message = $exception->getMessage();
+            $code = $exception->getCode();
+            return response()->view('error',compact('message','code'));
         }        
 
         $message = config('app.env') === 'local' ? $exception->getMessage() : 'Please contact to admin';
-        $code = $exception->getStatusCode(); 
-        return redirect()->route('error',[$message,$code]);
+        $code = 500;
+        return response()->view('error',compact('message','code'));
     }
 }
