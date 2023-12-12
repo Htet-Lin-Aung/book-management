@@ -58,7 +58,7 @@ Follow these steps to install and set up the Book Store Management System:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/book-store-management.git
+   git clone https://github.com/Htet-Lin-Aung/book-store-management.git
 
 2. Navigate to the project directory:
 
